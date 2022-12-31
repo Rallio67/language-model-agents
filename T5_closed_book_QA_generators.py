@@ -170,7 +170,12 @@ def generate_topic(paragraph):
     results=set()
     input_text="Task: Create a topic classifier for the provided paragraph.\nParagraph:\n"+paragraph+"\nTopic: "
     for k in range(0,20):
-        results.add(ask_flan_T5(input_text))
+        result=ask_flan_T5(input_text)
+        if result[1] > -4:
+            results.add(result)
+        if len(results) < 3:
+            results.add(("I was wondering",-3.3))
+            results.add(("I have a question",-3.3))
     sorted_results=Sort_Tuple(list(results))
     return sorted_results[0:5]
 
@@ -179,9 +184,8 @@ def generate_topic_prefix(topic_set):
     results=set()
     for entry in topic_set:
         topic=entry[0]
-        starts=['Regarding', 'Referring to', 'With regards to', 'Concerning', 'On the topic of']
         input_text="Task: Create a prepositional phrase about the topic.\nExample 1\nTopic: climbing mount everest\nPrepositional Phrase: With regards to climbing mount everest,\nExample 2\nTopic: United States Air Force\nPrepositional Phrase: On the topic of the United States Air Force,\nExample 3\nTopic: "+topic+"\nPrepositional Phrase: "
-        for k in range(0,3):
+        for k in range(0,5):
             results.add(ask_flan_T5(input_text))
         sorted_results=Sort_Tuple(list(results))
         return sorted_results[0:5]
@@ -265,11 +269,10 @@ def generate_closed_answer(qaqd_set):
 #Create a dictionary of questions and answers from a list of paragraphs. Takes about 20 seconds per paragraph to process.
 start_time=time.perf_counter()
 questions_dict={}
-uniq_id=300000
+uniq_id=100000
 for paragraph in paragraphs[0:1500]:
-    topic_set=generate_topic(paragraph)
-    topic_prefix=generate_topic_prefix(topic_set)
-    print(topic_prefix)
+    topic_list=generate_topic(paragraph)
+    topic_prefix=generate_topic_prefix(topic_list)
     question_set=generate_questions(paragraph,2)
     qa_set=generate_answers(paragraph,question_set)
     qaq_set=generate_question2(paragraph,qa_set)
@@ -280,7 +283,7 @@ for paragraph in paragraphs[0:1500]:
     a2d_set=generate_declarative(q2a2_set)
     a3cb_set=generate_closed_answer(a2d_set)
     questions_dict[uniq_id]={}
-    questions_dict[uniq_id]['topics']=topic_set
+    questions_dict[uniq_id]['topics']=topic_list
     questions_dict[uniq_id]['topic prepositions']=topic_prefix
     questions_dict[uniq_id]['paragraph']=paragraph
     entry_count=0
@@ -293,10 +296,11 @@ for paragraph in paragraphs[0:1500]:
         entry_count+=1
     questions_dict[uniq_id]['QA_set']=entry_dict
     uniq_id+=1
-    print(uniq_id)
+    print(uniq_id,"topics:", topic_prefix)
+
 stop_time=time.perf_counter()
 generation_time=stop_time-start_time
-print(questions_dict)
+print(questions_dict[uniq_id-1])
 print(generation_time)
 
 # create a binary pickle file to save your dictionary
