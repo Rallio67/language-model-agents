@@ -3,7 +3,7 @@
 
 #load all needed libraries
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-import torch, 
+import torch
 import math
 import pickle
 import time
@@ -73,7 +73,7 @@ model = AutoModelForSeq2SeqLM.from_pretrained("flan-t5-xxl",
                                               device_map=device_map_T5_13B,
                                               torch_dtype= torch.bfloat16,
                                               load_in_8bit=False
-                                             )                                            
+                                             )
 
 #Load an array of strings that are are reference or verified knowledge sources for QA generation. You can do this with a pickle.
 objects = []
@@ -106,7 +106,7 @@ paragraphs=fixed_paragraphs
 # Sort_Tuple sorts a list of tuples where the first element is text and the second element is logits e.g. ("text",-1.5)
 def Sort_Tuple(tup):
     tup.sort(key = lambda x: x[1],reverse=True)
-    return tup   
+    return tup
 
 # ask_flan_T5 is a function that takes an input text and returns the response of FLAN_T5 and a normalized logits score for the generation.
 def ask_flan_T5(input_text):
@@ -264,7 +264,7 @@ def generate_closed_answer(qaqd_set):
             result=ask_flan_T5D(input_text)
             qaqd_results.add((qa_item[0],qa_item[1],qa_item[2],result))
     return qaqd_results
-  
+
 #Create a dictionary of questions and answers from a list of paragraphs. Takes about 20 seconds per paragraph to process.
 start_time=time.perf_counter()
 questions_dict={}
