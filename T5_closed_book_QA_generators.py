@@ -3,8 +3,10 @@
 
 #load all needed libraries
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-import torch, re, math, random, os, pickle, time
-from shutil import copyfile
+import torch, 
+import math
+import pickle
+import time
 
 #This device map will work a GPU with > 24GB vram. It uses nearly all the memory.
 device_map_T5_13B={
@@ -90,7 +92,6 @@ if pickle_fail:
  "Well, we really are looking through a two dimensional screen until it's what we intuit to be a three dimensional world and also inferring dynamic stuff, making it 4D. Anyway, is it possible to visualize some pretty pictures that give us a deeper sense of the truth of reality? I think that we will incrementally be able to do that. I think that, for example, the picture that we have of electrons and photons interacting and scattering, it may have not been possible until Faraday did all of his experiments and then Maxwell wrote down his equations. And we were then sort of forced by his equations to think in a new way. And then when Planck in 1900, desperate to try to solve the problem of black body radiation, what they call the ultraviolet catastrophe where Newton was predicting infinite energies where there weren't infinite energies in black body radiation. And he in desperation proposed packets of energy. Then once you've done that, and then you have an Einstein come along five years later and show how that explains the photoelectric effect.",
  "But man, I don't know how I would feel about just bacteria everywhere. Well, it would be depressing if it was true. I suppose depressing, I don't think, I don't. I don't know what's more depressing, bacteria everywhere or nothing everywhere. Yes, either of them are chilling. Yeah. But whether it's chilling or not, I don't think should force us to change our view about whether it's real or not. Yes. And what I'm saying may or may not be true. So how would you feel if we discovered life on Mars? Absolutely. It sounds like you would be less excited than some others because you're like, well. What I would be most interested in is how similar to life on Earth it would be. It would actually turn into quite a subtle problem because the likelihood of life having gone to and fro between Mars and the Earth is quite, I wouldn't say high, but it's not low, it's quite feasible. And so if we found life on Mars and it had very similar genetic code, but it was slightly different, most people would interpret that immediately as evidence that they've been transit one way or the other and that it was a common origin of life on Mars or on the Earth and it went one way or the other way."]
 
-
 #Make sure no paragraphs are too long for T5. It handles up to 512 tokens context length.
 fixed_paragraphs=[]
 for k in paragraphs:
@@ -127,7 +128,6 @@ def ask_flan_T5(input_text):
         output_scores=""
         for k in i[1:]:
                 word_piece=(tokenizer.decode(k.item()))
-                token_id=(k.item())
                 word_prob=(round(probs[0][counter][k.item()].item(),2))+0.001
                 word_logprob=round(math.log(word_prob),2)
                 logprobs=logprobs+math.log(word_prob)
@@ -155,7 +155,6 @@ def ask_flan_T5D(input_text):
         output_scores=""
         for k in i[1:]:
                 word_piece=(tokenizer.decode(k.item()))
-                token_id=(k.item())
                 word_prob=(round(probs[0][counter][k.item()].item(),2))+0.001
                 word_logprob=round(math.log(word_prob),2)
                 logprobs=logprobs+math.log(word_prob)
