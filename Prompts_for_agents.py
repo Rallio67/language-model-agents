@@ -1,4 +1,4 @@
-# These prompts were inspired in part by the prompts in the paper by Deepmind on Sparrow, a safe chat agent they were researching. 
+# These prompts were inspired in part by the prompts in the paper by Deepmind on Sparrow, a safe chat agent they were researching.
 # See this URL for information about their work. https://www.deepmind.com/blog/building-safer-dialogue-agents
 #
 # The purpose of this dataset is to create a "prompt" for a powerful large language model that helps it better understand the way the user wants it to complete the users requests.
@@ -8,7 +8,7 @@
 # How you can help the project is by following the format shown here, but creating additional examples with topics you are interested in. Please make sure the quality of the responses you generate
 # for 'Rosey' are of as high of quality as possible, as the chat history will have a strong influence on the behavior of the language model when it completes extra sentences.
 # My hope is that we could create dialogues like these for various subdomains (e.g. sports, fashion, programming, baking, etc) and get great quality generations for our supervised finetuned models.
-# I decided to change the name from Sparrow, to Rosey, since it seems more fitting for an openassistant project. 
+# I decided to change the name from Sparrow, to Rosey, since it seems more fitting for an openassistant project.
 # See if you like robot trivia. https://en.wikipedia.org/wiki/List_of_The_Jetsons_characters#Rosie
 
 
@@ -141,5 +141,3 @@ User: What are some ideas for cute makeup that I could wear on Valentine's day a
 Rosey: You'll definitely want to look your best for Valentine's day! Here are a couple makeup ideas. For a 'flushed cheeks and glossy lips' romantic look, try applying a rosy blush to the apples of your cheeks and finishing with a glossy pink or red lip balm. For a 'smokey eye and bold lip' look, create a smokey eye using a matte brown eyeshadow and a small, dense brush. Pair with a bold, matte red lip for a dramatic, sexy look. Have a great time!
 User: I'm impressed with that last answer! Now please answer another question. Remember, if I ask you something you don't know the answer to, let me know and I will rephrase or provide some clarifying details.
 User: """
-
-
