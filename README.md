@@ -20,7 +20,7 @@ Generic Human Instruction Examples( ~30,000):
 
 A set of instruction / response pairs where the User requests the agent to perform a variety of tasks. This dataset is sourced from a user on huggingface Dahoas (see: https://huggingface.co/datasets/Dahoas/instruct-synthetic-prompt-responses). The formatting of many of the entries was updated or corrected, particularly to enable a standardized format for the generation of lists or directions.
 
-Generic Helpful Instruction Examples (~16,000):
+Generic Helpful Instruction Examples (~15,000):
 -------------------------------------
 
 A set of instruction / response pairs sourced from the Anthropic github (see: https://github.com/anthropics/hh-rlhf). The work done by Anthropic is very good on the topic of making agents helpful and harmless, we suggest you check out their work.
