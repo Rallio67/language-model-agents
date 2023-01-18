@@ -1,10 +1,10 @@
-# language-model-agents
-Experiments with generating opensource language model assistants
-
 # A new dataset for instruction tuning large language models
 The purpose of this dataset is to make it easy to convert a language model pretrained on large amounts of text into an instruction following model using a small amount of additional compute via finetuning or softprompt tuning.
 
-Many additional datasets are being prepared by various community members and will be incorporated into this dataset as we are able to verify the quality and formatting of the data.
+Many additional datasets are being prepared by various community members and will be incorporated into this dataset as we are able to verify the quality and formatting of the data. Our goal is to make helpful and non-toxic instruction tuned models available to anyone with a pretrained large language model.
+
+# Disclaimer
+These datasets contain synthetic data and in some cases data that includes humans trying to get the language model to say toxic/offensive/trolling things. If you are concerned about the presence of this type of material in the dataset please make sure you carefully inspect each of the entries and filter appropriately. Our goal is for the model to be as helpful and non-toxic as possible and we are actively evaluating ways to reduce or eliminate undesirable content from the instruction tuning datasets.
 
 # First dataset
 We have seen some promising capabilities from instruction tuning with the following mix of datasets that are derived from datasets available online.
@@ -35,3 +35,7 @@ Generic Harmless Instruction Examples:
 A set of instruction / response pairs sourced from the Anthropic redteam paper github (see: https://github.com/anthropics/hh-rlhf). 
 This dataset includes a lot of data regarding real humans trying to make the Anthropic language models say harmful/toxic/trolling things. 
 For this dataset only examples that were rated lowly on the harmful scale (0,1,2 out of 4, where 4 is the most toxic) were included. Again, only the first lines of dialogue (instruction, first_agent_response) were retained. took only the best results.
+
+Synthetic QA Instruction Examples:
+-----------------------------------
+A balanced set of Who/What/Where/When/Why/How questions that were generated from diverse sources of text on the internet following the schema in the synthetic QA notebook in this repo. These questions were generated from topics calculated from the source texts and then converted into an instruction / response pair by continuation of long prompt scripts (see in this repo) by a large language model (e.g. galactica or pythia). Many automatic evaluations were done to remove low quality outputs and to filter out obviously erroneous answers.
