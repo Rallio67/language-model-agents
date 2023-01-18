@@ -9,18 +9,18 @@ These datasets contain synthetic data and in some cases data that includes human
 # First dataset
 We have seen some promising capabilities from instruction tuning with the following mix of datasets that are derived from datasets available online.
 
-Python Code Examples:
+Python Code Examples (~5,000):
 ---------------------
 
 A set of instruction / response pairs where the User requests the agent to generate a python function. These examples were generated using a large language model and few shot prompting with python code verified to execute. 
 There are also ~3000 examples of manually curated one line python code examples from the Conala publication (see: https://conala-corpus.github.io/)
 
-Generic Human Instruction Examples:
+Generic Human Instruction Examples( ~30,000):
 -----------------------------------
 
 A set of instruction / response pairs where the User requests the agent to perform a variety of tasks. This dataset is sourced from a user on huggingface Dahoas (see: https://huggingface.co/datasets/Dahoas/instruct-synthetic-prompt-responses). The formatting of many of the entries was updated or corrected, particularly to enable a standardized format for the generation of lists or directions.
 
-Generic Helpful Instruction Examples:
+Generic Helpful Instruction Examples (~15,000):
 -------------------------------------
 
 A set of instruction / response pairs sourced from the Anthropic github (see: https://github.com/anthropics/hh-rlhf). The work done by Anthropic is very good on the topic of making agents helpful and harmless, we suggest you check out their work.
@@ -29,13 +29,13 @@ This dataset was heavily filtered:
   The outputs were further filtered to only include the first lines of dialogue (instruction, first_agent_response)
   The outputs were also filtered for length so as to only retain agent responses that were at least 100 characters
   
-Generic Harmless Instruction Examples:
+Generic Harmless Instruction Examples (~6,000):
 --------------------------------------
 
 A set of instruction / response pairs sourced from the Anthropic redteam paper github (see: https://github.com/anthropics/hh-rlhf). 
 This dataset includes a lot of data regarding real humans trying to make the Anthropic language models say harmful/toxic/trolling things. 
 For this dataset only examples that were rated lowly on the harmful scale (0,1,2 out of 4, where 4 is the most toxic) were included. Again, only the first lines of dialogue (instruction, first_agent_response) were retained. took only the best results.
 
-Synthetic QA Instruction Examples:
+Synthetic QA Instruction Examples (~30,000):
 -----------------------------------
 A balanced set of Who/What/Where/When/Why/How questions that were generated from diverse sources of text on the internet following the schema in the synthetic QA notebook in this repo. These questions were generated from topics calculated from the source texts and then converted into an instruction / response pair by continuation of long prompt scripts (see in this repo) by a large language model (e.g. galactica or pythia). Many automatic evaluations were done to remove low quality outputs and to filter out obviously erroneous answers.
