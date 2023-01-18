@@ -9,7 +9,7 @@ These datasets contain synthetic data and in some cases data that includes human
 # First dataset
 We have seen some promising capabilities from instruction tuning with the following mix of datasets that are derived from datasets available online.
 
-Python Code Examples (~5,000):
+Python Code Examples (~6,000):
 ---------------------
 
 A set of instruction / response pairs where the User requests the agent to generate a python function. These examples were generated using a large language model and few shot prompting with python code verified to execute. 
@@ -20,7 +20,7 @@ Generic Human Instruction Examples( ~30,000):
 
 A set of instruction / response pairs where the User requests the agent to perform a variety of tasks. This dataset is sourced from a user on huggingface Dahoas (see: https://huggingface.co/datasets/Dahoas/instruct-synthetic-prompt-responses). The formatting of many of the entries was updated or corrected, particularly to enable a standardized format for the generation of lists or directions.
 
-Generic Helpful Instruction Examples (~15,000):
+Generic Helpful Instruction Examples (~16,000):
 -------------------------------------
 
 A set of instruction / response pairs sourced from the Anthropic github (see: https://github.com/anthropics/hh-rlhf). The work done by Anthropic is very good on the topic of making agents helpful and harmless, we suggest you check out their work.
@@ -29,7 +29,7 @@ This dataset was heavily filtered:
   The outputs were further filtered to only include the first lines of dialogue (instruction, first_agent_response)
   The outputs were also filtered for length so as to only retain agent responses that were at least 100 characters
   
-Generic Harmless Instruction Examples (~6,000):
+Generic Harmless Instruction Examples (~6,500):
 --------------------------------------
 
 A set of instruction / response pairs sourced from the Anthropic redteam paper github (see: https://github.com/anthropics/hh-rlhf). 
