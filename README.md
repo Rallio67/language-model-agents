@@ -9,6 +9,10 @@ These datasets contain synthetic data and in some cases data that includes human
 # First dataset
 We have seen some promising capabilities from instruction tuning with the following mix of datasets that are derived from datasets available online.
 
+The files for this data are in json format as a list of tuples where each tuple is (source,instruction_response_pair)
+instruction_tuning_dataset_alpha_part1.json
+instruction_tuning_dataset_alpha_part2.json
+
 Python Code Examples (~6,000):
 ---------------------
 
