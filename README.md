@@ -40,6 +40,6 @@ A set of instruction / response pairs sourced from the Anthropic redteam paper g
 This dataset includes a lot of data regarding real humans trying to make the Anthropic language models say harmful/toxic/trolling things. 
 For this dataset only examples that were rated lowly on the harmful scale (0,1,2 out of 4, where 4 is the most toxic) were included. Again, only the first lines of dialogue (instruction, first_agent_response) were retained.
 
-Synthetic QA Instruction Examples (~30,000):
+Synthetic QA Instruction Examples (~15,000):
 -----------------------------------
 A balanced set of Who/What/Where/When/Why/How questions that were generated from diverse sources of text on the internet following the schema in the synthetic QA notebook in this repo. These questions were generated from topics calculated from the source texts and then converted into an instruction / response pair by continuation of long prompt scripts (see in this repo) by a large language model (e.g. galactica or pythia). Many automatic evaluations were done to remove low quality outputs and to filter out obviously erroneous answers.
