@@ -36,7 +36,7 @@ deepspeed --num_gpus=1 run_clm_minimal.py \
 --fp16 \
 --overwrite_cache \
 --evaluation_strategy="steps" \
---output_dir my_new_model \
+--output_dir custom_1.4B_512bs \
 --num_train_epochs 1 \
 --eval_steps 200 \
 --gradient_accumulation_steps 1 \
@@ -48,7 +48,6 @@ deepspeed --num_gpus=1 run_clm_minimal.py \
 
 # Example json for dsconfig (ds_config_gptneo.json)
 # Up to 13B model can be trained on single A100 80GB in DS config 2
-# Save this in same directory as this training script.
 
 """
 {
@@ -212,8 +211,8 @@ def main():
     # These datasets should be pretokenized and in the format of the toy dataset in (rallio_toy.zip)
     # A separate script to create datasets from text is available on the github.
     
-    train_dataset = load_from_disk("custom_train")
-    eval_dataset = load_from_disk("custom_eval")
+    train_dataset = load_from_disk("custom_train") # replace custom_train with your path
+    eval_dataset = load_from_disk("custom_eval") # replace custom eval with your path
 
     # See all possible arguments in src/transformers/training_args.py
     # or by passing the --help flag to this script.
@@ -355,12 +354,7 @@ def main():
         trainer.save_model()  # Saves the tokenizer too for easy upload
 
         metrics = train_result.metrics
-
-        max_train_samples = (
-            data_args.max_train_samples if data_args.max_train_samples is not None else len(
-                train_dataset)
-        )
-        metrics["train_samples"] = min(max_train_samples, len(train_dataset))
+        metrics["train_samples"] = len(train_dataset)
 
         trainer.log_metrics("train", metrics)
         trainer.save_metrics("train", metrics)
@@ -370,7 +364,7 @@ def main():
     if training_args.do_eval:
         logger.info("*** Evaluate ***")
         metrics = trainer.evaluate()
-        metrics["eval_samples"] = min(max_val_samples, len(eval_dataset))
+        metrics["eval_samples"] = len(eval_dataset)
         perplexity = math.exp(metrics["eval_loss"])
         metrics["perplexity"] = perplexity
         trainer.log_metrics("eval", metrics)
