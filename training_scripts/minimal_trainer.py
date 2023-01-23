@@ -36,7 +36,7 @@ deepspeed --num_gpus=1 run_clm_minimal.py \
 --fp16 \
 --overwrite_cache \
 --evaluation_strategy="steps" \
---output_dir custom_1.4B_512bs \
+--output_dir my_new_model \
 --num_train_epochs 1 \
 --eval_steps 200 \
 --gradient_accumulation_steps 1 \
@@ -48,6 +48,7 @@ deepspeed --num_gpus=1 run_clm_minimal.py \
 
 # Example json for dsconfig (ds_config_gptneo.json)
 # Up to 13B model can be trained on single A100 80GB in DS config 2
+# Save this in same directory as this training script.
 
 """
 {
@@ -368,15 +369,10 @@ def main():
     # Evaluation
     if training_args.do_eval:
         logger.info("*** Evaluate ***")
-
         metrics = trainer.evaluate()
-
-        max_val_samples = data_args.max_val_samples if data_args.max_val_samples is not None else len(
-            eval_dataset)
         metrics["eval_samples"] = min(max_val_samples, len(eval_dataset))
         perplexity = math.exp(metrics["eval_loss"])
         metrics["perplexity"] = perplexity
-
         trainer.log_metrics("eval", metrics)
         trainer.save_metrics("eval", metrics)
 
