@@ -100,42 +100,13 @@ The initial code and models are available on Github and Huggingface. Conditional
 We are in the process of converting very large pretraining datasets from the internet to conditional pretraining datasets and if you are someone that gets excited about building large datasets we would welcome your help on this effort. On the more experimental side of things, we are interested in developing reward models that efficiently calculate how well the outputs from conditional pretrained models conform with their conditionals. Please checkout the LAION discord or github if you are interested in contributing. We will be posting updated conditional pretrained models regularly on huggingface for community members to experiment with.
 
 
-
-
-
-
-
-
-
-
 If you wish to contribute, stay updated, or learn a bit more about the current work, please check out the following links:
-- 🧑‍💻 [GitHub Repository](https://github.com/LAION-AI/General-GPT)
+- 🧑‍💻 [GitHub Repository](https://github.com/LAION-AI/)
 - 💬 [LAION Discord](https://discord.gg/HzJU2kuC)
-
-
 
 ## Acknowledgements
 We further thank the authors and contributors of the following works/repositories:
 - [HuggingFace](https://github.com/huggingface/transformers)
 - [CLIP Retrieval](https://github.com/rom1504/clip-retrieval)
 
-Logo generated with [Craiyon](https://www.craiyon.com/)
-
-
 ## References
-
-[1] Lin, T. Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ramanan, D., ... & Zitnick, C. L. (2014). Microsoft coco: Common objects in context. In Computer Vision–ECCV 2014: 13th European Conference, Zurich, Switzerland, September 6-12, 2014, Proceedings, Part V 13 (pp. 740-755). Springer International Publishing.
-
-[2] Radford, A., Kim, J. W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., ... & Sutskever, I. (2021, July). Learning transferable visual models from natural language supervision. In International conference on machine learning (pp. 8748-8763). PMLR.
-
-[3] Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019). Language models are unsupervised multitask learners. OpenAI blog, 1(8), 9.
-
-[4] Mokady, R., Hertz, A., & Bermano, A. H. (2021). Clipcap: Clip prefix for image captioning. arXiv preprint arXiv:2111.09734.
-
-[5] Schuhmann, C., Beaumont, R., Vencu, R., Gordon, C., Wightman, R., Cherti, M., Coombes, T., Katta, A., Mullis, C., Wortsman, M., Schramowski, P., Kundurthy, S., Crowson, K., Schmidt, L., Kaczmarczyk, R., & Jitsev, J. (2022). LAION-5B: An open large-scale dataset for training next generation image-text models. _ArXiv, abs/2210.08402_.
-
-[6] Reimers, N., & Gurevych, I. (2019). Sentence-bert: Sentence embeddings using siamese bert-networks. arXiv preprint arXiv:1908.10084.
-
-[7] Elizalde, B., Deshmukh, S., Ismail, M. A., & Wang, H. (2022). Clap: Learning audio concepts from natural language supervision. arXiv preprint arXiv:2206.04769.
-
-[8] Muennighoff, N. (2022). Sgpt: Gpt sentence embeddings for semantic search. arXiv preprint arXiv:2202.08904.
