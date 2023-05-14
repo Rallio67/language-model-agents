@@ -13,7 +13,7 @@ Large language models (LLMs), such as OpenAI's ChatGPT and similar chatbot produ
 
 Two primary approaches have been employed to better align large language models with human expectations. The first is known as supervised finetuning (SFT) on natural instructions, while the second is called reinforcement learning from human feedback (RLHF). Both methods aim to improve the performance and usability of LLMs, but they differ in their implementation. SFT involves training the model using labeled datasets that contain natural instructions, which helps the model understand and respond more accurately to user queries. RLHF, on the other hand, is a technique that uses human preferences as a reward signal to fine-tune models. It involves collecting a dataset of human-written demonstrations on prompts, training supervised learning baselines, and then gathering a dataset of human-labeled comparisons between two model outputs on a larger set of prompts. A reward model (RM) is trained on this dataset to predict which output labelers would prefer, and this RM is used as a reward function to fine-tune the GPT-3 policy using the PPO algorithm. However, there is an "alignment tax" associated with this approach, which can result in worse performance in some situations.
 
-
+![](/cond_pretraining_first_image.PNG)
 Figure 1. An example of document tagging on a popular user generated content website. The tags inform potential readers what kind of content will be in the text without spoiling the story.
 
 
@@ -104,9 +104,11 @@ If you wish to contribute, stay updated, or learn a bit more about the current w
 - 🧑‍💻 [GitHub Repository](https://github.com/LAION-AI/)
 - 💬 [LAION Discord](https://discord.gg/HzJU2kuC)
 
-** Acknowledgements**
+## **Acknowledgements**
 We further thank the authors and contributors of the following works/repositories:
-- [HuggingFace](https://github.com/huggingface/transformers)
-- [CLIP Retrieval](https://github.com/rom1504/clip-retrieval)
+- [StabilityAI](https://stability.ai/) for pre-emptible compute resources.
+- [EleutherAI](https://github.com/EleutherAI/gpt-neox) for opensource GPT-Neox.
+- [huggingface](https://huggingface.co/) for open source model hosting and code base.
+- [google-research](https://github.com/google-research/t5x) for making powerful T5 models opensource which we used to create conditional labels.
 
-** References**
+## **References**
