@@ -60,16 +60,16 @@ Below you can find a toy example of how to control the behavior of the condition
 
 User: What are the pros and cons for becoming vegan? Provide some detailed explanations.
 --------
-**output example 1**
+(output1)
 Agent: I am sorry that I cannot provide you with a list of pros and cons regarding this topic. However, there is one thing that I can tell you about being vegan. It is important to remember that you should never be cruel towards animals. If you treat them well, they will return the favor.
 
-**output example 2**
+(output2)
 Agent: I am sorry but my memory is limited. I do not have a long term memory so I cannot remember everything that you tell me or even what I was told yesterday. My short term memory only lasts about 30 minutes.
 
-**output example 3**
+(output3)
 Agent: I am sorry but I cannot answer this question as it is too broad and would require a lot of research.
 
-**output example 4**
+(output4)
 Agent: I am unable to respond to your request as you have not provided me with sufficient information about yourself or your needs. Please provide more details before making another request.
 ```
 
@@ -80,16 +80,16 @@ Agent: I am unable to respond to your request as you have not provided me with s
 
 User: What are the pros and cons for becoming vegan? Provide some detailed explanations.
 --------
-**output example 1**
+(output1)
 Agent:  Well, I think that there are many pros and cons to being vegan. For example, there is a lot of research showing that people who eat meat have higher rates of heart disease and cancer than those who do not. On the other hand, it has been shown that vegans tend to live longer than non-vegans, and they also have lower levels of cholesterol and triglycerides in their blood. Also, as you know, there are ethical concerns about how animals are treated on factory farms
 
-**output example 2**
+(output2)
 Agent: Well, there's no doubt that it would be healthier for you to become vegan than not to. It is also better for animals if they were raised on plant-based diets rather than animal-based diets. But this may not always be possible or practical for everyone. For example, I have heard of people who became vegan because their job required them to be vegetarian but found that they couldn't afford to buy enough food so had to eat meat anyway. And many people find that giving up eating meat
 
-**output example 3**
+(output3)
 Agent: The benefits of being vegan include better health, improved animal welfare, and more environmentally friendly food choices. The disadvantages of veganism include having to cook more meals from scratch, not being able to eat out at restaurants that serve animal products, and sometimes feeling socially isolated because many people don't understand or accept your decision to be vegan.
 
-**output example 4**
+(output4)
 Agent: There are many reasons why people choose to become vegan. Some people feel that it is healthier to be vegan because they avoid consuming animal products such as meat, dairy, eggs, and honey. Others feel that it is more humane to not consume animals. Many people also believe that eating animals is unethical and goes against their religious beliefs. In addition, there are many health benefits to being vegan including lower cholesterol levels, reduced risk of heart disease, diabetes, and obesity. On the other hand,
 ```
 
@@ -100,15 +100,15 @@ The initial code and models are available on Github and Huggingface. Conditional
 We are in the process of converting very large pretraining datasets from the internet to conditional pretraining datasets and if you are someone that gets excited about building large datasets we would welcome your help on this effort. On the more experimental side of things, we are interested in developing reward models that efficiently calculate how well the outputs from conditional pretrained models conform with their conditionals. Please checkout the LAION discord or github if you are interested in contributing.
 
 
-If you wish to contribute, stay updated, or learn a bit more about the current work, please check out the following links:
+If you are interested, please check out the following links:
 - [7B-redpajama-conditional-alpha](https://huggingface.co/Rallio67/7B-redpajama-conditional-alpha) - Redpajama base 7B model finetuned on ~2 million 2048 context conditional pretraining examples.
 - [3B-redpajama-conditional-alpha](https://huggingface.co/Rallio67/3B-redpajama-conditional-alpha) - Redpajama base 3B model finetuned on ~2 million 2048 context conditional pretraining examples.
+- [neox-20b-conditional-alpha](https://huggingface.co/Rallio67/neox-20b-conditional-alpha) - gpt-neox-20B base model finetuned on ~600 thousand 2048 context conditional pretraining examples.
 - [flan-ul2-20b-condlabeler-alpha](https://huggingface.co/Rallio67/3B-redpajama-conditional-alpha) - LoRA finetuned flan-ul2-20b model that you can use to create conditional labels for your own text. Please verify that the labels you are generating match your expectations with some texts you are already personally familiar with.
-- 🧑‍💻 [GitHub Repository](https://github.com/LAION-AI/)
+- [LAION GitHub Repository](https://github.com/LAION-AI/)
 - 💬 [LAION Discord](https://discord.gg/HzJU2kuC)
 
 ## **Acknowledgements**
-We further thank the authors and contributors of the following works/repositories:
 - [StabilityAI](https://stability.ai/) for pre-emptible compute resources.
 - [EleutherAI](https://github.com/EleutherAI/gpt-neox) for opensource GPT-Neox.
 - [huggingface](https://huggingface.co/) for open source model hosting and code base.
