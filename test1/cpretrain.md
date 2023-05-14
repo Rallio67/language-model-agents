@@ -11,9 +11,9 @@ previewImg: "https://aeiljuispo.cloudimg.io/v7/https://s3.amazonaws.com/moonup/p
 Large language models (LLMs), such as OpenAI's ChatGPT and similar chatbot products from other organizations, have recently gained widespread adoption. These models can extend text or respond to instructions in a natural and helpful manner. Despite the core technologies behind LLMs, namely the transformer architecture and the GPT decoder-only causal language model, remaining relatively unchanged for over five years, the surge in popularity of ChatGPT can be largely attributed to recent approaches that better align the output of LLMs with users' and service providers' intentions.
 
 
-Two primary approaches have been employed to better align large language models with human expectations. The first is known as supervised finetuning (SFT) on natural instructions, while the second is called reinforcement learning from human feedback (RLHF). Both methods aim to improve the performance and usability of LLMs, but they differ in their implementation. SFT involves training the model using labeled datasets that contain natural instructions, which helps the model understand and respond more accurately to user queries. RLHF, on the other hand, is a technique that uses human preferences as a reward signal to fine-tune models. It involves collecting a dataset of human-written demonstrations on prompts, training supervised learning baselines, and then gathering a dataset of human-labeled comparisons between two model outputs on a larger set of prompts. A reward model (RM) is trained on this dataset to predict which output labelers would prefer, and this RM is used as a reward function to fine-tune the GPT-3 policy using the PPO algorithm. However, there is an "alignment tax" associated with this approach, which can result in worse performance in some situations.
+Two primary approaches have been employed to better align large language models with human expectations. The first is known as supervised finetuning (SFT) on natural instructions, while the second is called reinforcement learning from human feedback (RLHF). Both methods aim to improve the performance and usability of LLMs, but they differ in their implementation. SFT involves training the model using labeled datasets that contain natural instructions, which helps the model understand and respond more accurately to user queries. RLHF, on the other hand, is a technique that uses human preferences as a reward signal to fine-tune models. It involves collecting a dataset of human-written demonstrations on prompts, training supervised learning baselines, and then gathering a dataset of human-labeled comparisons between two model outputs on a larger set of prompts. A reward model (RM) is trained on this dataset to predict which output labelers would prefer, and this RM is used as a reward function to fine-tune the LLM using the PPO algorithm. However, there is an "alignment tax" associated with this approach, which can result in worse performance in some situations.
 
-![](/cond_pretraining_first_image.PNG)
+![](/cond_pretraining_first_image.png)
 Figure 1. An example of document tagging on a popular user generated content website. The tags inform potential readers what kind of content will be in the text without spoiling the story.
 
 
@@ -41,15 +41,15 @@ Another significant advantage of conditional pretraining is the transparency of 
 
 ## **How to Prepare a Conditional Pretraining Dataset**
 
-We have developed a fine tuned LoRA model based on the open source FLAN-UL2 that takes as input about 2000 words of text and outputs the conditional pretraining labels for the document. An example output from this conditional tagging model for a recent news article about LAION in Forbes (article  link) is below. To generate these document tags only text from the body of the article was used.
+We have developed a fine tuned LoRA model based on the open source FLAN-UL2 that takes as input about 2000 words of text and outputs the conditional pretraining labels for the document. An example output from this conditional tagging model for a recent news article about LAION in [Forbes](https://www.forbes.com/sites/hessiejones/2023/04/19/amid-growing-call-to-pause-ai-research-laion-petitions-governments-to-keep-agi-research-open-active-and-responsible/) is below. To generate these document tags only text from the body of the article was used.
 
 ```
-[ artificial intelligence, open source, ai, open letter, open source ai, ai research, open letter]
+[ artificial intelligence, open source, ai, open letter, open source ai, ai research]
 
 # This article explains the importance of a CERN-like organization to coordinate efforts on the transparency of large-scale AI research and provides information about LAION. 
 ```
 
-Example Outputs from a New Conditional Pretrained Model
+## **Example Outputs from a New Conditional Pretrained Model**
 
 Below you can find a toy example of how to control the behavior of the conditional language model. In this example, the conditional labels are used to create a very unhelpful chatbot or one that is helpful. These outputs are from the base conditional pretrained model, without any explicit instruction tuning or examples of chatbots in the training data.
 
@@ -97,10 +97,13 @@ Agent: There are many reasons why people choose to become vegan. Some people fee
 
 The initial code and models are available on Github and Huggingface. Conditional pretrained models can be used exactly the same way as any other large language model, just remember to prepend your conditionals to the start of your input and spend some time experimenting with what tags suit your use case. 
 
-We are in the process of converting very large pretraining datasets from the internet to conditional pretraining datasets and if you are someone that gets excited about building large datasets we would welcome your help on this effort. On the more experimental side of things, we are interested in developing reward models that efficiently calculate how well the outputs from conditional pretrained models conform with their conditionals. Please checkout the LAION discord or github if you are interested in contributing. We will be posting updated conditional pretrained models regularly on huggingface for community members to experiment with.
+We are in the process of converting very large pretraining datasets from the internet to conditional pretraining datasets and if you are someone that gets excited about building large datasets we would welcome your help on this effort. On the more experimental side of things, we are interested in developing reward models that efficiently calculate how well the outputs from conditional pretrained models conform with their conditionals. Please checkout the LAION discord or github if you are interested in contributing.
 
 
 If you wish to contribute, stay updated, or learn a bit more about the current work, please check out the following links:
+- [7B-redpajama-conditional-alpha](https://huggingface.co/Rallio67/7B-redpajama-conditional-alpha) - Redpajama base 7B model finetuned on ~2 million 2048 context conditional pretraining examples.
+- [3B-redpajama-conditional-alpha](https://huggingface.co/Rallio67/3B-redpajama-conditional-alpha) - Redpajama base 3B model finetuned on ~2 million 2048 context conditional pretraining examples.
+- [flan-ul2-20b-condlabeler-alpha](https://huggingface.co/Rallio67/3B-redpajama-conditional-alpha) - LoRA finetuned flan-ul2-20b model that you can use to create conditional labels for your own text. Please verify that the labels you are generating match your expectations with some texts you are already personally familiar with.
 - 🧑‍💻 [GitHub Repository](https://github.com/LAION-AI/)
 - 💬 [LAION Discord](https://discord.gg/HzJU2kuC)
 
@@ -109,6 +112,10 @@ We further thank the authors and contributors of the following works/repositorie
 - [StabilityAI](https://stability.ai/) for pre-emptible compute resources.
 - [EleutherAI](https://github.com/EleutherAI/gpt-neox) for opensource GPT-Neox.
 - [huggingface](https://huggingface.co/) for open source model hosting and code base.
-- [google-research](https://github.com/google-research/t5x) for making powerful T5 models opensource which we used to create conditional labels.
+- [RedPajama-INCITE](https://www.together.xyz/blog/redpajama-models-v1) for training and releasing opensource base models.
+- [google-research](https://github.com/google-research/t5x) for training and releasing opensource T5 models which we used to create conditional labels.
 
 ## **References**
+Conditional pretraining is very straightforward conceptually and does not require any complex mathematical arguments for it's justification. If you want to read a recent academic text discussing the concept in more detail please check out the paper by Anthropic. Conditional Pretraining was also used by Google to create Palm 2.
+- [Pretraining Language Models with Human Preferences](https://arxiv.org/abs/2302.08582) by Anthropic.
+- [PALM-2 Technical Report](https://ai.google/static/documents/palm2techreport.pdf) by Google AI. Search for "control tokens" to find relevant information.
